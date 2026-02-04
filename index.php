@@ -6,6 +6,8 @@
     <title>Accueil</title>
 </head>
 <body>
-    
+    <?php 
+       
+    ?>
 </body>
 </html>
