@@ -7,7 +7,9 @@ function getPDO():PDO {
         return $db;
     }
     catch(PDOException $err){
+        var_dump($err);
         throw $err;
+
     }
     
 }
