@@ -6,17 +6,16 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
 
     if(
         isset($_POST['mail']) && $_POST['mail'] !== '' &&
-        isset($_POST['user']) && $_POST['user'] !== '' &&
         isset($_POST['mdp']) && $_POST['mdp'] !== ''  )
     {
 
+    
 
     $u = ["mail"=>$_POST["mail"],
-            "user"=>$_POST['user'],
             "mdp"=>$_POST['mdp']
             ];
 
-        register($u);    
+        connexion($u);    
     }
     else{
        header("Location: /webimmo/"); 

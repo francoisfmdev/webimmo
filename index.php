@@ -10,10 +10,7 @@ require_once("./functions/database.php");
     <title>Accueil</title>
 </head>
 <body>
-    <?php 
-        $db = getPDO();
-        var_dump($db);
-    ?>
+  
     <h1>Hello</h1>
 
 </body>
