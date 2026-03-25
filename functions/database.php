@@ -1,7 +1,7 @@
 <?php 
 
 
-function getPDO():PDO { 
+function getPDO() { 
     try{
         $db =  new PDO('mysql:host=localhost;dbname=webimmo', "root", "");
         return $db;
