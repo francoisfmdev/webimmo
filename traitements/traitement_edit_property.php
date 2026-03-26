@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   // 1) Validation champs
   if (
     isset($_POST["name"]) && $_POST["name"] !== '' &&
-    isset($_POST["nbr_room"]) && $_POST["nbr_rooms"] !== '' &&
+    isset($_POST["nbr_rooms"]) && $_POST["nbr_rooms"] !== '' &&
     isset($_POST["surface"]) && $_POST["surface"] !== '' &&
     isset($_POST["description"]) && $_POST["description"] !== ''
   ) {
