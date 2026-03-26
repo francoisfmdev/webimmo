@@ -18,13 +18,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   // 1) Validation champs
   if (
     isset($_POST["name"]) && $_POST["name"] !== '' &&
-    isset($_POST["nbr_rooms"]) && $_POST["nbr_rooms"] !== '' &&
+    isset($_POST["nbr_roomss"]) && $_POST["nbr_roomss"] !== '' &&
     isset($_POST["surface"]) && $_POST["surface"] !== '' &&
     isset($_POST["description"]) && $_POST["description"] !== ''
   ) {
 
     $name = trim($_POST['name']);
-    $nbr_room = trim($_POST['nbr_rooms']);
+    $nbr_rooms = trim($_POST['nbr_roomss']);
     $surface = trim($_POST['surface']);
     $description = trim($_POST['description']);
 
@@ -70,7 +70,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // 3) Enregistrement BDD
     $ok = add_properties_with_users(
       $name,
-      $nbr_room,
+      $nbr_rooms,
       $surface,
       $description,
       $filename,
