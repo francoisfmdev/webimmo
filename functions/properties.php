@@ -38,7 +38,7 @@ function delete_property_by_id($id,$user_id){
 function get_properties_about_user($session_id){
   $pdo = getPDO();  
 
-  $sql = "SELECT p.id, p.name, p.nbr_rooms, p.surface, p.description, p.image, p.user_id FROM properties as p INNER JOIN users as u ON u.id = p.user_id WHERE id = :id" ;
+  $sql = "SELECT p.id, p.name, p.nbr_rooms, p.surface, p.description, p.image, p.user_id FROM properties as p INNER JOIN users as u ON u.id = p.user_id WHERE u.id = :id" ;
   $stmt = $pdo->prepare($sql);
   $ok = $stmt->execute([":id"=>$session_id]);
   if($ok){
@@ -48,4 +48,15 @@ function get_properties_about_user($session_id){
 
   return $results;
 
+}
+
+function get_one_property_by_id($id){
+  $pdo =  getPDO();
+  $sql = "SELECT * FROM properties WHERE  id = :id";
+  $stmt = $pdo->prepare($sql);
+  $ok = $stmt->execute([":id"=>$id]);
+  if($ok){
+    $property = $stmt->fetch(PDO::FETCH_ASSOC);
+  }
+  return $property;
 }

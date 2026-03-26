@@ -20,7 +20,7 @@ $result = get_properties_about_user($_SESSION["user_id"]);
 
 <div class="container">
     <div class="row">
-        <?php var_dump($result); ?>
+        <?php  // var_dump($result); ?>
         <?php foreach($result as $property): ?>
             <div class="col-md-6 col-lg-4 mb-4">
                 <div class="card h-100">
@@ -37,7 +37,7 @@ $result = get_properties_about_user($_SESSION["user_id"]);
                     </ul>
 
                     <div class="card-body">
-                        <a href="#" class="btn btn-primary">Voir</a>
+                        <a href="/webimmo/pages/admin_property.php?id=<?php echo $property["id"]; ?>" class="btn btn-primary">Voir</a>
                         <form  method="POST" action="../traitements/traitement_delete_property.php">
                             <input  class="form-controls" type="hidden" name="id" value="<?php echo $property['id']?>">
                             <button class="btn btn-danger">Supprimer</button>
