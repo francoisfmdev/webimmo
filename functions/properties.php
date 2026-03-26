@@ -5,7 +5,7 @@ function add_properties_with_users($name,$nbr_room,$surface,$desc,$image,$sessio
 
 $pdo = getPDO();
 $sql = "INSERT INTO properties (name, nbr_rooms, surface, description,image,user_id,created_at)
-          VALUES (:name, :nbr_rooms, :surface,:description,:image,:user_id, NOW())";
+          VALUES (:name, :nbr_rooms, :surface,:description,:image,:use_id, NOW())";
 
   $stmt = $pdo->prepare($sql);
   $ok = $stmt->execute([
@@ -15,6 +15,26 @@ $sql = "INSERT INTO properties (name, nbr_rooms, surface, description,image,user
     ':description' => $desc,
     ':image'=> $image,
     'user_id' =>$session_id ]);
+  
+    return $ok;
+  
+}
+
+function update_properties_with_users($id,$name,$nbr_room,$surface,$desc,$image){
+
+$pdo = getPDO();
+$sql = "UPDATE properties
+SET name = :name, nbr_rooms = :nbr_rooms, surface = :surface, description = :description, image =:image, created_at = NOW()
+WHERE id = :id";
+
+  $stmt = $pdo->prepare($sql);
+  $ok = $stmt->execute([
+    ":id"=>$id,
+    ':name' => $name,
+    ':nbr_rooms'=>$nbr_room,
+    ':surface'=>$surface,
+    ':description' => $desc,
+    ':image'=> $image ]);
   
     return $ok;
   

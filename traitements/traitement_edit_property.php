@@ -13,21 +13,24 @@ const ALLOWED_MIME = [
 
 $uploadDir = '../assets/images_properties';
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+   
   // 1) Validation champs
   if (
-    isset($_POST["name"]) && $_POST["name"] !== '' &&
-    isset($_POST["nbr_roomss"]) && $_POST["nbr_roomss"] !== '' &&
+    isset($_POST["id"]) && $_POST["id"] !== '' &&
+    isset($_POST["property_name"]) && $_POST["property_name"] !== '' &&
+    isset($_POST["nbr_rooms"]) && $_POST["nbr_rooms"] !== '' &&
     isset($_POST["surface"]) && $_POST["surface"] !== '' &&
     isset($_POST["description"]) && $_POST["description"] !== ''
   ) {
-
-    $name = trim($_POST['name']);
-    $nbr_rooms = trim($_POST['nbr_roomss']);
+   
+    $id = trim($_POST['id']);
+    $name = trim($_POST['property_name']);
+    $nbr_rooms = trim($_POST['nbr_rooms']);
     $surface = trim($_POST['surface']);
     $description = trim($_POST['description']);
-
+   
     // Image actuelle
     $currentImage = $_POST["current_image"] ?? null;
     $filename = $currentImage;
@@ -68,13 +71,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     // 3) Enregistrement BDD
-    $ok = add_properties_with_users(
+    $ok = update_properties_with_users(
+      $id,
       $name,
       $nbr_rooms,
       $surface,
       $description,
-      $filename,
-      $_SESSION["user_id"]
+      $filename
     );
 
     if (!$ok) {

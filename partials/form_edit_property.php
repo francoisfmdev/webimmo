@@ -1,6 +1,7 @@
 <form method="POST" enctype="multipart/form-data" action="../traitements/traitement_edit_property.php" class="card p-4 shadow-sm">
 
     <input type="hidden" value="<?php echo $_SESSION["user_id"]; ?>"/>
+    <input type="hidden" value="<?php echo $property["id"] ?>" name="id"/>
 
     <h4 class="mb-4 text-center">Modifier un bien </h4>
 
@@ -11,8 +12,8 @@
 
     <div class="row">
         <div class="col-md-6 mb-3">
-            <label for="nbr_room" class="form-label">Nombre de pièce</label>
-            <input type="number" name="nbr_room" id="nbr_rooms" class="form-control" value="<?php echo $property["nbr_rooms"]; ?>" required>
+            <label for="nbr_rooms" class="form-label">Nombre de pièce</label>
+            <input type="number" name="nbr_rooms" id="nbr_rooms" class="form-control" value="<?php echo $property["nbr_rooms"]; ?>" required>
         </div>
 
         <div class="col-md-6 mb-3">
