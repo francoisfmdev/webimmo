@@ -17,14 +17,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
   // 1) Validation champs
   if (
-    isset($_POST["property_name"]) && $_POST["property_name"] !== '' &&
-    isset($_POST["nbr_room"]) && $_POST["nbr_room"] !== '' &&
+    isset($_POST["name"]) && $_POST["name"] !== '' &&
+    isset($_POST["nbr_room"]) && $_POST["nbr_rooms"] !== '' &&
     isset($_POST["surface"]) && $_POST["surface"] !== '' &&
     isset($_POST["description"]) && $_POST["description"] !== ''
   ) {
 
-    $name = trim($_POST['property_name']);
-    $nbr_room = trim($_POST['nbr_room']);
+    $name = trim($_POST['name']);
+    $nbr_room = trim($_POST['nbr_rooms']);
     $surface = trim($_POST['surface']);
     $description = trim($_POST['description']);
 
