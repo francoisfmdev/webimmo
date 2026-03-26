@@ -1,6 +1,6 @@
 <?php
 session_start();
-include_once "../functions/users.php";
+require_once "../functions/users.php";
 
 
 deconnexion();

@@ -38,10 +38,13 @@ $result = get_properties_about_user($_SESSION["user_id"]);
 
                     <div class="card-body">
                         <a href="/webimmo/pages/admin_property.php?id=<?php echo $property["id"]; ?>" class="btn btn-primary">Voir</a>
+                        <a href="/webimmo/pages/edit_property.php?id=<?php echo $property["id"]; ?>" class="btn btn-warning">modifier</a>
                         <form  method="POST" action="../traitements/traitement_delete_property.php">
                             <input  class="form-controls" type="hidden" name="id" value="<?php echo $property['id']?>">
                             <button class="btn btn-danger">Supprimer</button>
                         </form>
+
+                        
                     </div>
                 </div>
             </div>

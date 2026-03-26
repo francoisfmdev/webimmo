@@ -1,4 +1,6 @@
-<?php session_start(); ?>
+<?php session_start(); 
+require_once "../functions/properties.php";
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -8,9 +10,12 @@
     <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
 
+    
+
     <!-- Flaticon UIcons -->
     <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/uicons-solid-rounded/css/uicons-solid-rounded.css">
-
+    <!-- My CSS -->
+    <link rel="stylesheet" href="../assets/css/styles.css">
     <title>Bien immobilier</title>
 </head>
 <body class="bg-light">
@@ -20,41 +25,37 @@ if( isset($_SESSION["user_id"]) && $_SESSION["user_id"] !== "") :
 
     if(isset($_GET["id"]) && $_GET["id"] !== "" ): 
         $id = $_GET["id"];
-        // $property = get_one_property_by_id($id);
+        $property = get_one_property_by_id($id);
 ?>
 
 <div class="container py-5">
 
-    <div class="card shadow-lg border-0">
+    <div class=" shadow-lg border-0">
         
         <!-- Image -->
-        <img src="https://via.placeholder.com/1200x500" class="card-img-top" alt="Bien immobilier">
+        <img src="../assets/images_properties/<?php echo $property["image"]; ?>" class="card-img-top" alt="Bien immobilier">
 
-        <div class="card-body">
+        <div class="">
 
             <!-- Nom -->
-            <h2 class="card-title mb-4">Villa moderne avec piscine</h2>
+            <h2 class=" mb-4"><?php echo $property["name"] ?> </h2>
 
             <!-- Infos clés -->
             <div class="row text-center mb-4">
 
                 <div class="col-md-4">
-                    <i class="fi fi-sr-ruler-combined fs-2 text-primary"></i>
+                    <img src="../assets/img/area.png"  class="icons" alt="icone de surface"/>
                     <p class="mt-2 mb-0"><strong>Surface</strong></p>
-                    <p>150 m²</p>
+                    <p><?php echo $property["surface"]; ?> m²</p>
                 </div>
 
                 <div class="col-md-4">
-                    <i class="fi fi-sr-bed fs-2 text-primary"></i>
-                    <p class="mt-2 mb-0"><strong>Chambres</strong></p>
-                    <p>3</p>
+                    <img src="../assets/img/room.png" class="icons" alt="icone nombre de pièce"/>
+                    <p class="mt-2 mb-0"><strong>Pièces</strong></p>
+                    <p> <?php echo $property["nbr_rooms"]; ?> </p>
                 </div>
 
-                <div class="col-md-4">
-                    <i class="fi fi-sr-bath fs-2 text-primary"></i>
-                    <p class="mt-2 mb-0"><strong>Salles de bain</strong></p>
-                    <p>2</p>
-                </div>
+               
 
             </div>
 
@@ -62,18 +63,8 @@ if( isset($_SESSION["user_id"]) && $_SESSION["user_id"] !== "") :
             <div class="mb-4">
                 <h4>Description</h4>
                 <p>
-                    Superbe villa moderne située dans un quartier calme.
-                    Elle dispose d’un grand séjour lumineux, d’une cuisine équipée,
-                    de plusieurs chambres et d’une piscine extérieure.
-                    Idéal pour une famille ou investissement locatif.
+                  <?php echo $property["description"]; ?>
                 </p>
-            </div>
-
-            <!-- Bouton -->
-            <div class="text-end">
-                <a href="#" class="btn btn-primary">
-                    <i class="fi fi-sr-envelope"></i> Contacter
-                </a>
             </div>
 
         </div>
