@@ -1,24 +1,37 @@
-<?php if($_SESSION["role"] === "agent"): 
+<?php session_start(); 
 require_once "../functions/properties.php";
-
-$result = get_properties_about_user($_SESSION["user_id"]);
+$result = get_all_properties();
 ?>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
 
-<p>Bienvenue <?php echo $_SESSION["username"]; ?> !</p>
+    
 
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-12 col-md-8 col-lg-6">
-            <?php require_once "../partials/form_add_property.php"; ?>
-        </div>
-    </div>
-</div>
+    <!-- Flaticon UIcons -->
+    <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/uicons-solid-rounded/css/uicons-solid-rounded.css">
+    <!-- My CSS -->
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <title>Bien immobilier</title>
+</head>
+<body>
+<?php require_once "../partials/header.php"; ?>
 
-<?php if(empty($result)): ?>
+    <?php if(empty($result)): ?>
     <p>Vous ne gérez absolument aucune propriété !</p>
 <?php else: ?>
 
+
 <div class="container">
+    <div class="row mt-4 mb-4">
+        <h1 class="text-center">Liste des biens </h1>
+
+    </div>
     <div class="row">
         <?php  // var_dump($result); ?>
         <?php foreach($result as $property): ?>
@@ -38,19 +51,12 @@ $result = get_properties_about_user($_SESSION["user_id"]);
 
                     <div class="card-body">
                         <a href="/webimmo/pages/single_property.php?id=<?php echo $property["id"]; ?>" class="btn btn-primary">Voir</a>
-                        <a href="/webimmo/pages/edit_property.php?id=<?php echo $property["id"]; ?>" class="btn btn-warning">modifier</a>
-                        <form  method="POST" action="../traitements/traitement_delete_property.php">
-                            <input  class="form-controls" type="hidden" name="id" value="<?php echo $property['id']?>">
-                            <button class="btn btn-danger">Supprimer</button>
-                        </form>
-
-                        
                     </div>
                 </div>
             </div>
         <?php endforeach; ?>
-    </div>
-</div>
-
-<?php endif; ?>
-<?php endif; ?>
+        </div>
+    </div>  
+    <?php endif; ?>
+</body>
+</html>

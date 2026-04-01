@@ -19,7 +19,7 @@ require_once "../functions/properties.php";
     <title>Bien immobilier</title>
 </head>
 <body class="bg-light">
-
+<?php require_once "../partials/header.php"; ?>
 <?php
 if( isset($_SESSION["user_id"]) && $_SESSION["user_id"] !== "") :
 

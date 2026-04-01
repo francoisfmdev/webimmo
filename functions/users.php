@@ -52,6 +52,9 @@ function connexion($user){
 
 }
 
+
+
+
 function deconnexion(){
 
 session_destroy();

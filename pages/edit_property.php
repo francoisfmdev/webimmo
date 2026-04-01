@@ -18,8 +18,8 @@ require_once "../functions/properties.php";
     <link rel="stylesheet" href="../assets/css/styles.css">
     <title>Bien immobilier</title>
 </head>
-<body class="bg-light">
-
+<body>
+ <?php require_once "../partials/header.php"; ?>
 <?php
 if( isset($_SESSION["user_id"]) && $_SESSION["user_id"] !== "") :
 

@@ -80,3 +80,16 @@ function get_one_property_by_id($id){
   }
   return $property;
 }
+
+function get_all_properties(){
+    $pdo =  getPDO();
+    $sql = "SELECT * FROM properties";
+    $stmt = $pdo->query($sql);
+    $properties = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    
+       return $properties;
+    
+  
+
+}
