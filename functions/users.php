@@ -55,8 +55,3 @@ function connexion($user){
 
 
 
-function deconnexion(){
-
-session_destroy();
-header("Location: /webimmo/pages/connexion.php");
-}

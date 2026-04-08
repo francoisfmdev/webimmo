@@ -1,16 +1,18 @@
 <?php
 require_once 'database.php';
 
-function add_properties_with_users($name,$nbr_room,$surface,$desc,$image,$session_id){
+function add_properties_with_users($name,$nbr_room,$price,$typology,$surface,$desc,$image,$session_id){
 
 $pdo = getPDO();
-$sql = "INSERT INTO properties (name, nbr_rooms, surface, description,image,user_id,created_at)
-          VALUES (:name, :nbr_rooms, :surface,:description,:image,:use_id, NOW())";
+$sql = "INSERT INTO properties (name, nbr_rooms,price,typology, surface, description,image,user_id,created_at)
+          VALUES (:name, :nbr_rooms,:price,:typology, :surface,:description,:image,:user_id, NOW())";
 
   $stmt = $pdo->prepare($sql);
   $ok = $stmt->execute([
     ':name' => $name,
     ':nbr_rooms'=>$nbr_room,
+    ':price'=>$price,
+    'typology'=>$typology,
     ':surface'=>$surface,
     ':description' => $desc,
     ':image'=> $image,
@@ -20,11 +22,11 @@ $sql = "INSERT INTO properties (name, nbr_rooms, surface, description,image,user
   
 }
 
-function update_properties_with_users($id,$name,$nbr_room,$surface,$desc,$image){
+function update_properties_with_users($id,$name,$nbr_room,$surface,$desc,$image,$price,$typology){
 
 $pdo = getPDO();
 $sql = "UPDATE properties
-SET name = :name, nbr_rooms = :nbr_rooms, surface = :surface, description = :description, image =:image, created_at = NOW()
+SET name = :name, nbr_rooms = :nbr_rooms, surface = :surface, description = :description, image =:image, price = :price,typology = :typology, created_at = NOW()
 WHERE id = :id";
 
   $stmt = $pdo->prepare($sql);
@@ -34,7 +36,10 @@ WHERE id = :id";
     ':nbr_rooms'=>$nbr_room,
     ':surface'=>$surface,
     ':description' => $desc,
-    ':image'=> $image ]);
+    ':image'=> $image, 
+    ':price'=>$price,
+    ':typology'=>$typology
+    ]);
   
     return $ok;
   
@@ -58,7 +63,7 @@ function delete_property_by_id($id,$user_id){
 function get_properties_about_user($session_id){
   $pdo = getPDO();  
 
-  $sql = "SELECT p.id, p.name, p.nbr_rooms, p.surface, p.description, p.image, p.user_id FROM properties as p INNER JOIN users as u ON u.id = p.user_id WHERE u.id = :id" ;
+  $sql = "SELECT p.id, p.name, p.nbr_rooms, p.price,p.typology, p.surface, p.description, p.image, p.user_id FROM properties as p INNER JOIN users as u ON u.id = p.user_id WHERE u.id = :id" ;
   $stmt = $pdo->prepare($sql);
   $ok = $stmt->execute([":id"=>$session_id]);
   if($ok){

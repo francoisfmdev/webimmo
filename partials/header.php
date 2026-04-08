@@ -36,8 +36,14 @@ require_once(__DIR__ . "/../functions/tools.php");
           <?php if(check_connected_user()): ?>
 
             <li class="nav-item">
-              <a class="btn btn-gold btn-sm ms-2" href="/webimmo//pages/dashboard.php">
+              <a class="btn btn-gold btn-sm ms-2" href="/webimmo/pages/dashboard.php">
                 Gérer ses biens
+              </a>
+            </li>
+             
+            <li class="nav-item">
+              <a class="btn btn-gold btn-sm ms-2" href="/webimmo/pages/deconnexion.php">
+                Se deconnecter
               </a>
             </li>
 

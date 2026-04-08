@@ -22,7 +22,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     isset($_POST["property_name"]) && $_POST["property_name"] !== '' &&
     isset($_POST["nbr_rooms"]) && $_POST["nbr_rooms"] !== '' &&
     isset($_POST["surface"]) && $_POST["surface"] !== '' &&
-    isset($_POST["description"]) && $_POST["description"] !== ''
+    isset($_POST["description"]) && $_POST["description"] !== '' &&
+    isset($_POST["price"]) && $_POST["price"] !== '' &&
+    isset($_POST["typology"]) && $_POST["typology"] !== ''
+
   ) {
    
     $id = trim($_POST['id']);
@@ -30,6 +33,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nbr_rooms = trim($_POST['nbr_rooms']);
     $surface = trim($_POST['surface']);
     $description = trim($_POST['description']);
+    $price  = trim($_POST["price"]);
+    $typology = trim($_POST["typology"]);
    
     // Image actuelle
     $currentImage = $_POST["current_image"] ?? null;
@@ -77,7 +82,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       $nbr_rooms,
       $surface,
       $description,
-      $filename
+      $filename,
+      $price,
+      $typology
     );
 
     if (!$ok) {

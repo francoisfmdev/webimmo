@@ -22,7 +22,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   if (isset($_POST["property_name"]) && $_POST["property_name"]  !== '' &&
       isset($_POST["nbr_room"]) && $_POST["nbr_room"]  !== '' &&
       isset($_POST["surface"]) && $_POST["surface"]  !== '' &&
-      isset($_POST["description"]) && $_POST["description"]  !== '' 
+      isset($_POST["description"]) && $_POST["description"]  !== '' &&
+      isset($_POST["price"]) && $_POST["price"]  !== '' &&
+      isset($_POST["typology"]) && $_POST["typology"]  !== '' 
+      
      
     )
     {
@@ -30,6 +33,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       $nbr_room = trim($_POST['nbr_room'] ?? '');
       $surface = trim($_POST['surface'] ?? '');
       $description = trim($_POST['description'] ?? '');
+      $price  = trim($_POST["price"] ?? '');
+      $typology =  trim($_POST["typology"] ?? '');
+   
+
       // 2) Validation fichier
       if (!isset($_FILES['picture']) || $_FILES['picture']['error'] !== UPLOAD_ERR_OK) {
         die('Upload image invalide');
@@ -61,7 +68,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     die('Erreur déplacement image');
   }
 
-  $ok =  add_properties_with_users($name,$nbr_room,$surface,$description,$filename,$_SESSION["user_id"]);
+  $ok =  add_properties_with_users($name,$nbr_room,$price,$typology,$surface,$description,$filename,$_SESSION["user_id"]);
   if (!$ok) {
     // Rollback “manuel” du fichier si BDD échoue
     @unlink($destination);

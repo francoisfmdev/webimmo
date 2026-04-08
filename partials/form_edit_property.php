@@ -12,6 +12,18 @@
 
     <div class="row">
         <div class="col-md-6 mb-3">
+            <label for="typology" class="form-label">type de bien :</label>
+            <select name="typology" class="form-select" id="typology">
+                <option value="Location" <?= ($property["typology"] === "Location") ? 'selected' :""  ?>  >Location</option>
+                <option value="Achat"  <?= ($property["typology"] === "Achat") ? 'selected' :""  ?>>Achat</option>
+            </select>
+        </div>
+
+        <div class="col-md-6 mb-3">
+            <label for="price" class="form-label">Prix :</label>
+            <input type="number" name="price" id="price" class="form-control" value="<?php echo $property["price"]; ?>" required>
+        </div>
+        <div class="col-md-6 mb-3">
             <label for="nbr_rooms" class="form-label">Nombre de pièce</label>
             <input type="number" name="nbr_rooms" id="nbr_rooms" class="form-control" value="<?php echo $property["nbr_rooms"]; ?>" required>
         </div>

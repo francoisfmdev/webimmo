@@ -32,8 +32,10 @@ $result = get_properties_about_user($_SESSION["user_id"]);
                     </div>
 
                     <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Type de bien : <?php echo  htmlspecialchars($property["typology"]); ?></li>
                         <li class="list-group-item">Surface : <?php echo  htmlspecialchars($property["surface"]); ?></li>
                         <li class="list-group-item">nombre de pièce : <?php echo  htmlspecialchars($property["nbr_rooms"]); ?></li>
+                        <li class="list-group-item">Prix : <?php echo  htmlspecialchars($property["price"]); ?></li>
                     </ul>
 
                     <div class="card-body">
