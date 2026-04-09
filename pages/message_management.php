@@ -9,23 +9,20 @@
     <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/uicons-solid-rounded/css/uicons-solid-rounded.css">
     <!-- My CSS -->
     <link rel="stylesheet" href="../assets/css/styles.css">
-
     
-    <title>Dashboard</title>
+    <title>gestion des messages</title>
 </head>
 <body>
     <?php require_once "../partials/header.php"; ?>
-    <h1 class="text-center">Dashboard</h1>
+    <h1 class="text-center">Gestion des messages</h1>
     <?php
      
-    if( isset($_SESSION["user_id"]) && $_SESSION["user_id"] !== ""){
-        require_once "../partials/dashboard_admin.php";
-        require_once "../partials/dashboard_agent.php";
-    }
-    else {
+    if( isset($_SESSION["user_id"]) && $_SESSION["user_id"] !== ""): ?>
+        
+    
+   <?php else :
         header("Location: /webimmo/pages/connexion.php");
-    }
-
+    endif; 
     ?>
 </body>
 </html>
