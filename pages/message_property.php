@@ -6,6 +6,8 @@ if( isset($_SESSION["user_id"]) && $_SESSION["user_id"] !== "") :
     if(isset($_GET["id"]) && $_GET["id"] !== "" ): 
         $id = $_GET["id"];
         $property = get_one_property_by_id($id);
+
+       
 ?>
 
 <!DOCTYPE html>
@@ -66,6 +68,31 @@ if( isset($_SESSION["user_id"]) && $_SESSION["user_id"] !== "") :
                 <p>
                   <?php echo $property["description"]; ?>
                 </p>
+            </div>
+
+             <!-- formulaire de contact -->
+            <div class="mb-4">
+                <h4 class="col-6 offset-2 mb-4">Contactez l'agent </h4>
+               <form class="col-6 offset-2" method="POST" action="../traitements/traitement_message_property.php" >
+                   <input type="hidden" name="property_id"  value="<?php echo  $property["id"]?>">
+                   <div class="mb-4">
+                        <label for="email"> Rensignez votre mail</label>
+                             <input class="form-control" type="email" id="email"  name="email" placeholder="exemple@domaine.fr" required>
+                   </div>
+
+                   <div class="mb-4">
+                        <label for="identite"> Rensignez votre votre identité</label>
+                        <input class="form-control " type="text" id="identite"  name="identite" placeholder="Nom Prenom" required>
+                   </div class="mb-4">
+
+                   <div class="mb-4">
+                        <label for="message">Votre message</label>
+                        <textarea class="form-control" cols="10" name="message" id="message" required>
+
+                        </textarea>
+                   </div>
+                   <button class="btn btn-success mb-4">contacter</button>
+               </form>
             </div>
 
         </div>

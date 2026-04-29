@@ -23,7 +23,7 @@ $result = get_all_properties();
 <?php require_once "../partials/header.php"; ?>
 
     <?php if(empty($result)): ?>
-    <p>Vous ne gérez absolument aucune propriété !</p>
+    <p> aucune propriété !</p>
 <?php else: ?>
 
 
@@ -51,6 +51,7 @@ $result = get_all_properties();
 
                     <div class="card-body">
                         <a href="/webimmo/pages/single_property.php?id=<?php echo $property["id"]; ?>" class="btn btn-primary">Voir</a>
+                        <a href="/webimmo/pages/message_property.php?id=<?php echo $property["id"]; ?>" class="btn btn-success">Contacter l'agent</a>
                     </div>
                 </div>
             </div>

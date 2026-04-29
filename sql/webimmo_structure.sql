@@ -124,7 +124,7 @@ ALTER TABLE `users`
 -- Contraintes pour la table `messages`
 --
 ALTER TABLE `messages`
-  ADD CONSTRAINT `fk_messages_property` FOREIGN KEY (`property_id`) REFERENCES `property` (`id`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `fk_messages_property` FOREIGN KEY (`property_id`) REFERENCES `properties` (`id`) ON UPDATE CASCADE;
 
 --
 -- Contraintes pour la table `properties`
